@@ -289,8 +289,8 @@ class Convoluter:
         
         for slide in slides_array:
             name = slide.split('.')[:-1]
-            name ='.'.join(name)
-            name = name.split('\\')[-1]
+            name = '.'.join(name)
+            name = name.split('/')[-1]
             filetype = slide.split('.')[-1]
             path = slide
 
