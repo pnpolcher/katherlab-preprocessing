@@ -115,8 +115,7 @@ class SlideReader:
             return None
 
         thumbs_path = join(export_folder, "thumbs")
-        if not os.path.exists(thumbs_path):
-            os.makedirs(thumbs_path)
+        os.makedirs(thumbs_path, exist_ok=True)
             
         # Load ROIs if available
         roi_path_csv = self.basename + ".csv"
@@ -306,8 +305,7 @@ class Convoluter:
         '''Parent function to guide convolution across a whole-slide image and execute desired functions.
         '''
         ignoredFile_list = []
-        if not os.path.exists(join(self.SAVE_FOLDER, "BLOCKS")):
-            os.makedirs(join(self.SAVE_FOLDER, "BLOCKS"))
+        os.makedirs(join(self.SAVE_FOLDER, "BLOCKS"), exist_ok=True)
             
         pb = progressbar.ProgressBar()
         pool = ThreadPool(NUM_THREADS)
@@ -332,14 +330,12 @@ class Convoluter:
             return
         
         tiles_path = whole_slide.export_folder + '/' + "BLOCKS"
-        if not os.path.exists(tiles_path):
-            os.makedirs(tiles_path)
+        os.makedirs(tiles_path, exist_ok=True)
             
         tiles_path = tiles_path + '/' + case_name
             
            
-        if not os.path.exists(tiles_path):
-            os.makedirs(tiles_path)
+        os.makedirs(tiles_path, exist_ok=True)
                  
          
         counter = len(os.listdir(tiles_path))
